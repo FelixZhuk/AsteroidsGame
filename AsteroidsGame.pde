@@ -1,16 +1,75 @@
-//your variable declarations here
+SpaceShip spaceBallOne; 
 public void setup() 
 {
-  //your code here
+	 spaceBallOne = new SpaceShip();
+	 size(500,500);
+	 background(0);
 }
 public void draw() 
 {
-  //your code here
+	spaceBallOne.show();
 }
 class SpaceShip extends Floater  
 {   
-    //your code here
-}
+	public SpaceShip() {
+		corners = 3;
+		xCorners = new int[corners];
+		yCorners = new int[corners];
+		xCorners[0] = 16;
+		yCorners[0] = 0;
+		xCorners[1] = -8;
+		yCorners[1] = -8;
+		xCorners[2] = -8;
+		yCorners[2] = 8;
+		myCenterX = 250;
+		myCenterY = 250;
+		myDirectionX = 0;
+		myDirectionY = 0;
+		myPointDirection = 0;
+		myPointDirection = 0;
+		myColor = 255;
+
+	}
+	public void setX(int x) {myCenterX = x;} 
+	public int getX(){return (int)myCenterX;}   
+	public void setY(int y){myCenterY = y;}
+	public int getY(){return (int)myCenterY;}
+	public void setDirectionX(double x) {myDirectionX = x;} 
+	public double getDirectionX(){return myDirectionX;}
+	public void setDirectionY(double y){myDirectionY = y;}  
+	public double getDirectionY(){return myDirectionY;}
+	public void setPointDirection(int degrees){myPointDirection = degrees;} 
+	public double getPointDirection() {return myPointDirection;}
+	
+	public void keyPressed() 
+	{
+		if(key == "w") {
+			setDirectionY(270);
+		}
+		else {
+
+		}
+		if(key == "s") {
+			setDirectionY(90);
+		}
+		else {
+
+		}
+		if(key == "a") {
+			setDirectionY(180);
+		}
+		else {
+
+		}
+		if(key == "d") {
+			setDirectionY(0);
+		}
+		else {
+
+		}
+	}
+ }
+
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
