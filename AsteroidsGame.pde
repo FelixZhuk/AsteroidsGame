@@ -9,6 +9,45 @@ public void draw()
 {
 	spaceBallOne.show();
 }
+
+public void keyPressed() 
+	{
+		if(key == 'w') {
+			spaceBallOne.setDirectionY(270);
+		}
+		else {
+
+		}
+		if(key == 's') {
+			spaceBallOne.setDirectionY(90);
+		}
+		else {
+
+		}
+		if(key == 'a') {
+			spaceBallOne.setDirectionY(180);
+		}
+		else {
+
+		}
+		if(key == 'd') {
+			spaceBallOne.setDirectionY(0);
+		}
+		else {
+
+		}
+		if (key == 'z') {
+			spaceBallOne.setX((int)Math.random()*500);
+			spaceBallOne.setY((int)Math.random()*500);
+		}
+		else {
+
+		}
+		if (key == 'q') {
+			
+		}
+	}
+
 class SpaceShip extends Floater  
 {   
 	public SpaceShip() {
@@ -41,33 +80,7 @@ class SpaceShip extends Floater
 	public void setPointDirection(int degrees){myPointDirection = degrees;} 
 	public double getPointDirection() {return myPointDirection;}
 	
-	public void keyPressed() 
-	{
-		if(key == "w") {
-			setDirectionY(270);
-		}
-		else {
 
-		}
-		if(key == "s") {
-			setDirectionY(90);
-		}
-		else {
-
-		}
-		if(key == "a") {
-			setDirectionY(180);
-		}
-		else {
-
-		}
-		if(key == "d") {
-			setDirectionY(0);
-		}
-		else {
-
-		}
-	}
  }
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
