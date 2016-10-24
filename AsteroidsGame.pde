@@ -1,13 +1,15 @@
 SpaceShip spaceBallOne; 
 public void setup() 
 {
-	 spaceBallOne = new SpaceShip();
-	 size(500,500);
-	 background(0);
+	size(500,500);
+	spaceBallOne = new SpaceShip();
+
 }
 public void draw() 
 {
+	background(0);
 	spaceBallOne.show();
+	spaceBallOne.move();
 }
 
 public void keyPressed() 
@@ -44,7 +46,7 @@ public void keyPressed()
 
 		}
 		if (key == 'q') {
-			
+			spaceBallOne.setPointDirection();
 		}
 	}
 
