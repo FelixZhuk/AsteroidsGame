@@ -15,38 +15,34 @@ public void draw()
 public void keyPressed() 
 	{
 		if(key == 'w') {
-			spaceBallOne.setDirectionY(270);
+			spaceBallOne.accelerate(1);
 		}
 		else {
-
+			spaceBallOne.accelerate(-1);
 		}
 		if(key == 's') {
-			spaceBallOne.setDirectionY(90);
+
 		}
 		else {
 
 		}
 		if(key == 'a') {
-			spaceBallOne.setDirectionY(180);
+			spaceBallOne.rotate(10);
 		}
 		else {
 
 		}
 		if(key == 'd') {
-			spaceBallOne.setDirectionY(0);
+			spaceBallOne.rotate(10);
 		}
 		else {
 
 		}
 		if (key == 'z') {
-			spaceBallOne.setX((int)Math.random()*500);
-			spaceBallOne.setY((int)Math.random()*500);
+			spaceBallOne.setPointDirection((int)(Math.random()*365));
 		}
 		else {
 
-		}
-		if (key == 'q') {
-			spaceBallOne.setPointDirection();
 		}
 	}
 
