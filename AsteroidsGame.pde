@@ -1,8 +1,13 @@
 SpaceShip spaceBallOne; 
+Star [] twinkle;
 public void setup() 
 {
 	size(500,500);
 	spaceBallOne = new SpaceShip();
+	twinkle = new Star[100];
+	for (int i = 0; i < twinkle.length; i++) {
+		twinkle[i] = new Star((int)(Math.random()*500),(int)(Math.random()*500));
+	}
 
 }
 public void draw() 
@@ -10,6 +15,9 @@ public void draw()
 	background(0);
 	spaceBallOne.show();
 	spaceBallOne.move();
+	for (int i = 0; i < twinkle.length; i++) {
+		twinkle[i].show();
+	}
 }
 
 public void keyPressed() 
@@ -17,32 +25,21 @@ public void keyPressed()
 		if(key == 'w') {
 			spaceBallOne.accelerate(1);
 		}
-		else {
-			spaceBallOne.accelerate(-1);
-		}
 		if(key == 's') {
-
-		}
-		else {
-
+			spaceBallOne.accelerate(-1);
 		}
 		if(key == 'a') {
 			spaceBallOne.rotate(10);
 		}
-		else {
-
-		}
 		if(key == 'd') {
-			spaceBallOne.rotate(10);
-		}
-		else {
-
+			spaceBallOne.rotate(-10);
 		}
 		if (key == 'z') {
 			spaceBallOne.setPointDirection((int)(Math.random()*365));
-		}
-		else {
-
+			spaceBallOne.setX((int)(Math.random()*500));
+			spaceBallOne.setY((int)(Math.random()*500));
+			spaceBallOne.setDirectionX(0);
+			spaceBallOne.setDirectionY(0);
 		}
 	}
 
@@ -79,6 +76,20 @@ class SpaceShip extends Floater
 	public double getPointDirection() {return myPointDirection;}
 	
 
+ }
+
+ class Star {
+ 	private int myX;
+ 	private int myY;
+
+ 	public Star(int x, int y) {
+ 		myX = x;
+ 		myY = y;
+ 	}
+ 	public void show() {
+ 		fill(255);
+ 		ellipse(myX,myY,5,5);
+ 	}
  }
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
