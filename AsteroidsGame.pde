@@ -1,9 +1,15 @@
 SpaceShip spaceBallOne; 
 Star [] twinkle;
+Asteroid[] rockInSpace;
+
 public void setup() 
 {
 	size(500,500);
 	spaceBallOne = new SpaceShip();
+	rockInSpace = new Asteroid[10];
+	for (int i = 0; i < rockInSpace.length; i++) {
+		rockInSpace[i] = new Asteroid();
+	}
 	twinkle = new Star[100];
 	for (int i = 0; i < twinkle.length; i++) {
 		twinkle[i] = new Star((int)(Math.random()*500),(int)(Math.random()*500));
@@ -17,6 +23,10 @@ public void draw()
 	spaceBallOne.move();
 	for (int i = 0; i < twinkle.length; i++) {
 		twinkle[i].show();
+	}
+	for (int i = 0; i < rockInSpace.length; i++) {
+		rockInSpace[i].show();
+		rockInSpace[i].move();
 	}
 }
 
@@ -49,22 +59,27 @@ class Asteroid extends	Floater
 	public Asteroid() {
 		rotationSpeed = (int)(Math.random() * 3) - 1;
 
-		corners = 6;
+		corners = 5;
 		xCorners = new int[corners];
 		yCorners = new int[corners];
-		xCorners[0] = 3;
+		xCorners[0] = 5;
 		yCorners[0] = 0;
-		xCorners[1] = -8;
-		yCorners[1] = -8;
-		xCorners[2] = -8;
-		yCorners[2] = 8;
+		xCorners[1] = 0;
+		yCorners[1] = 8;
+		xCorners[2] = -7;
+		yCorners[2] = 7;
+		xCorners[3] = -8;
+		yCorners[3] = -8;
+		xCorners[4] = 0;
+		yCorners[4] = -8;
+
 		myCenterX = 250;
 		myCenterY = 250;
-		myDirectionX = 0;
-		myDirectionY = 0;
+		myDirectionX = (int)(Math.random() * 5) - 2;
+		myDirectionY = (int)(Math.random() * 5) - 2;
 		myPointDirection = 0;
 		myPointDirection = 0;
-		myColor = 250;
+		myColor = color(128,128,128);
 	}
 	public void setX(int x){myCenterX = x;}
 	public int getX(){return (int)myCenterX;}   
@@ -77,7 +92,8 @@ class Asteroid extends	Floater
 	public void setPointDirection(int degrees){myPointDirection = degrees;} 
 	public double getPointDirection() {return myPointDirection;}
 	public void move() {
-		setPointDirection
+		rotate(rotationSpeed);
+		super.move();
 	}
 
 }
