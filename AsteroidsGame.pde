@@ -1,14 +1,14 @@
 SpaceShip spaceBallOne; 
 Star [] twinkle;
-Asteroid[] rockInSpace;
+ArrayList <Asteroid> rockInSpace;
 
 public void setup() 
 {
 	size(500,500);
 	spaceBallOne = new SpaceShip();
-	rockInSpace = new Asteroid[10];
-	for (int i = 0; i < rockInSpace.length; i++) {
-		rockInSpace[i] = new Asteroid();
+	rockInSpace = new ArrayList <Asteroid>();
+	for (int i = 0; i < 10; i++) {
+		rockInSpace.add(new Asteroid());
 	}
 	twinkle = new Star[100];
 	for (int i = 0; i < twinkle.length; i++) {
@@ -24,9 +24,14 @@ public void draw()
 	for (int i = 0; i < twinkle.length; i++) {
 		twinkle[i].show();
 	}
-	for (int i = 0; i < rockInSpace.length; i++) {
-		rockInSpace[i].show();
-		rockInSpace[i].move();
+	for (int i = 0; i < rockInSpace.size(); i++) {
+		if (dist(spaceBallOne.getX(),spaceBallOne.getY(),rockInSpace.get(i).getX(),rockInSpace.get(i).getY()) < 20) {
+			rockInSpace.remove(i);
+		}
+		else {
+			rockInSpace.get(i).show();
+			rockInSpace.get(i).move();
+		}
 	}
 }
 
