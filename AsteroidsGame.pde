@@ -1,12 +1,14 @@
 SpaceShip spaceBallOne; 
 Star [] twinkle;
 ArrayList <Asteroid> rockInSpace;
+Bullet yellowDot;
 
 public void setup() 
 {
 	size(500,500);
 	spaceBallOne = new SpaceShip();
 	rockInSpace = new ArrayList <Asteroid>();
+	yellowDot = new Bullet(spaceBallOne);
 	for (int i = 0; i < 10; i++) {
 		rockInSpace.add(new Asteroid());
 	}
@@ -19,6 +21,8 @@ public void setup()
 public void draw() 
 {
 	background(0);
+	yellowDot.show();
+	yellowDot.move();
 	spaceBallOne.show();
 	spaceBallOne.move();
 	for (int i = 0; i < twinkle.length; i++) {
