@@ -1,14 +1,14 @@
 SpaceShip spaceBallOne; 
 Star [] twinkle;
 ArrayList <Asteroid> rockInSpace;
-Bullet yellowDot;
+ArrayList <Bullet> yellowDot;
 
 public void setup() 
 {
 	size(500,500);
 	spaceBallOne = new SpaceShip();
 	rockInSpace = new ArrayList <Asteroid>();
-	yellowDot = new Bullet(spaceBallOne);
+	yellowDot = new ArrayList <Bullet>();
 	for (int i = 0; i < 10; i++) {
 		rockInSpace.add(new Asteroid());
 	}
@@ -21,8 +21,6 @@ public void setup()
 public void draw() 
 {
 	background(0);
-	yellowDot.show();
-	yellowDot.move();
 	spaceBallOne.show();
 	spaceBallOne.move();
 	for (int i = 0; i < twinkle.length; i++) {
@@ -35,6 +33,19 @@ public void draw()
 		else {
 			rockInSpace.get(i).show();
 			rockInSpace.get(i).move();
+		}
+	}
+	for (int i = 0; i < yellowDot.size(); i++) {
+		for (int j = 0; j < rockInSpace.size(); j++) {
+			if (dist(yellowDot.get(i).getX(),yellowDot.get(i).getY(),rockInSpace.get(j).getX(),rockInSpace.get(j).getY()) < 20) {
+				rockInSpace.remove(j);
+				yellowDot.remove(i);
+				break;
+			}
+			else {
+				yellowDot.get(i).show();
+				yellowDot.get(i).move();
+			}
 		}
 	}
 }
@@ -59,6 +70,9 @@ public void keyPressed()
 			spaceBallOne.setY((int)(Math.random()*500));
 			spaceBallOne.setDirectionX(0);
 			spaceBallOne.setDirectionY(0);
+		}
+		if (key == ' ') {
+			yellowDot.add(new Bullet(spaceBallOne));
 		}
 	}
 
