@@ -23,9 +23,6 @@ public void draw()
 	background(0);
 	spaceBallOne.show();
 	spaceBallOne.move();
-	for (int i = 0; i < twinkle.length; i++) {
-		twinkle[i].show();
-	}
 	for (int i = 0; i < rockInSpace.size(); i++) {
 		if (dist(spaceBallOne.getX(),spaceBallOne.getY(),rockInSpace.get(i).getX(),rockInSpace.get(i).getY()) < 20) {
 			rockInSpace.remove(i);
@@ -36,17 +33,60 @@ public void draw()
 		}
 	}
 	for (int i = 0; i < yellowDot.size(); i++) {
-		for (int j = 0; j < rockInSpace.size(); j++) {
-			if (dist(yellowDot.get(i).getX(),yellowDot.get(i).getY(),rockInSpace.get(j).getX(),rockInSpace.get(j).getY()) < 20) {
-				rockInSpace.remove(j);
-				yellowDot.remove(i);
-				break;
-			}
-			else {
-				yellowDot.get(i).show();
-				yellowDot.get(i).move();
+		if (rockInSpace.size() > 0) {
+		 	for (int j = 0; j < rockInSpace.size(); j++) {
+				if (dist(yellowDot.get(i).getX(),yellowDot.get(i).getY(),rockInSpace.get(j).getX(),rockInSpace.get(j).getY()) < 20) {
+					rockInSpace.remove(j);
+					yellowDot.remove(i);
+					break;
+				}
+				if (yellowDot.get(i).getX() > 495) {
+					yellowDot.remove(i);
+					break;
+				}
+				if (yellowDot.get(i).getX() < 5) {
+					yellowDot.remove(i);
+					break;
+				}
+				if (yellowDot.get(i).getY() > 495) {
+					yellowDot.remove(i);
+					break;
+				}
+				if (yellowDot.get(i).getY() < 5) {
+					yellowDot.remove(i);
+					break;
+				}
+				else {
+					yellowDot.get(i).show();
+					yellowDot.get(i).move();
+				}
 			}
 		}
+		else {
+				if (yellowDot.get(i).getX() > 495) {
+					yellowDot.remove(i);
+					break;
+				}
+				if (yellowDot.get(i).getX() < 5) {
+					yellowDot.remove(i);
+					break;
+				}
+				if (yellowDot.get(i).getY() > 495) {
+					yellowDot.remove(i);
+					break;
+				}
+				if (yellowDot.get(i).getY() < 5) {
+					yellowDot.remove(i);
+					break;
+				}
+				else {
+					yellowDot.get(i).show();
+					yellowDot.get(i).move();
+				}
+		}
+	}
+	for (int i = 0; i < twinkle.length; i++) {
+		twinkle[i].show();
 	}
 }
 
